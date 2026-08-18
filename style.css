@@ -1,210 +1,684 @@
+/* =========================
+   RESET
+========================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
 body {
-    background: #078337fb;
-    color: #f1f1f1;
     font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at top left, #16833b, transparent 40%),
+        radial-gradient(circle at bottom right, #063a1a, transparent 40%),
+        #081b0e;
+
+    color: white;
+
+    min-height: 100vh;
+
     padding: 40px;
 }
+
+
+/* =========================
+   HEADER
+========================= */
+
 header {
-    text-align: center;
-    margin-bottom: 70px;
+    max-width: 1100px;
+    margin: 0 auto 70px;
 }
 
-header h1 {
-    font-size: 52px;
+.header-content {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+}
+
+.header-text {
+    text-align: left;
+}
+
+.header-text h1 {
+    font-size: 50px;
+
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+
+    text-shadow:
+        0 0 10px rgba(150, 255, 100, 0.4);
 }
 
-header p {
-    font-size: 27px;
+.header-text p {
+    font-size: 22px;
+
     color: #d6d6d6;
 }
 
+
+/* =========================
+   MENU BUTTON
+========================= */
+
+.menu-container {
+    position: relative;
+}
+
+.menu-button {
+    width: 60px;
+    height: 55px;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    border: 2px solid rgba(200, 255, 117, 0.5);
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 6px;
+
+    transition: 0.3s ease;
+}
+
+
+/* THREE LINES */
+
+.menu-button span {
+    width: 28px;
+    height: 3px;
+
+    background: #c8ff75;
+
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+}
+
+
+/* HOVER */
+
+.menu-button:hover {
+    background: #21871d;
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 20px rgba(200, 255, 117, 0.5);
+}
+
+
+/* MENU ANIMATION INTO X */
+
+.menu-button.active span:nth-child(1) {
+    transform:
+        translateY(9px)
+        rotate(45deg);
+}
+
+.menu-button.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-button.active span:nth-child(3) {
+    transform:
+        translateY(-9px)
+        rotate(-45deg);
+}
+
+
+/* =========================
+   DROPDOWN MENU
+========================= */
+
+.menu {
+    display: none;
+
+    position: absolute;
+
+    right: 0;
+    top: 65px;
+
+    width: 180px;
+
+    background: rgba(5, 20, 10, 0.97);
+
+    border: 1px solid rgba(200, 255, 117, 0.4);
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.5);
+
+    z-index: 1000;
+}
+
+.menu.show {
+    display: block;
+
+    animation: menuAnimation 0.3s ease;
+}
+
+.menu a {
+    display: block;
+
+    padding: 17px 20px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    transition: 0.3s ease;
+}
+
+.menu a:last-child {
+    border-bottom: none;
+}
+
+.menu a:hover {
+    background:
+        linear-gradient(
+            90deg,
+            #21871d,
+            #75c92f
+        );
+
+    padding-left: 30px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
 main {
     max-width: 950px;
+
     margin: auto;
 }
+
+
+/* =========================
+   PROFILE
+========================= */
+
 .profile {
-    background: linear-gradient(
-        135deg,
-        #b7d434 0%,
-        #3f871d 50%,
-        #03080c 100%
-    );
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9abb29,
+            #287d25,
+            #03080c
+        );
 
     border-radius: 25px;
+
     padding: 70px 40px;
+
     margin-bottom: 40px;
 
-    text-align: center;
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.4);
+
+    transition: 0.4s ease;
 }
+
+.profile:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(120, 255, 100, 0.25);
+}
+
+
+/* =========================
+   PROFILE IMAGE
+========================= */
 
 .profile-left img {
-    width: 260px;
-    height: 260px;
+    width: 180px;
+    height: 180px;
 
-    border-radius: 50%;
     object-fit: cover;
 
-    border: 5px solid #066906;
+    border-radius: 50%;
 
-    margin-bottom: 45px;
+    border: 4px solid #c8ff75;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 0 20px rgba(150, 255, 100, 0.5);
+
+    transition: 0.4s ease;
 }
+
+.profile-left img:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 35px rgba(150, 255, 100, 0.8);
+}
+
+
+/* =========================
+   PROFILE INFORMATION
+========================= */
 
 .profile-name {
     font-size: 42px;
-    letter-spacing: 2px;
+
+    letter-spacing: 3px;
+
     margin-bottom: 25px;
 }
 
 .profile-right p {
-    font-size: 28px;
-    margin: 15px 0;
-    color: #e5e5e5;
+    font-size: 22px;
+
+    margin: 12px 0;
+
+    color: #eeeeee;
 }
+
+
+/* =========================
+   SECTION CARDS
+========================= */
+
 .about,
 .Skills,
 .contact {
-    background: linear-gradient(
-        135deg,
-        #94ac0b 0%,
-        #21871d 50%,
-        #03080c 100%
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #78970d,
+            #1f7420,
+            #03080c
+        );
 
     border-radius: 25px;
+
     padding: 60px 50px;
+
     margin-bottom: 40px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.35);
+
+    transition: 0.4s ease;
 }
-.about > h2,
+
+.about:hover,
+.Skills:hover,
+.contact:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+.about h2,
 .Skills h2,
 .contact h2 {
+
     text-align: center;
-    font-size: 50px;
+
+    font-size: 45px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
     margin-bottom: 35px;
 }
 
-.about > p {
-    font-size: 26px;
-    line-height: 1.7;
-    color: #e0e0e0;
-    text-align: justify;
-}
 
-.Skills {
-    margin-top: 40px;
-}
+/* LINE UNDER TITLE */
 
-.Skills ul {
-    list-style: none;
-    text-align: center;
-}
+.about h2::after,
+.Skills h2::after,
+.contact h2::after {
 
-.Skills li {
-    font-size: 25px;
-    padding: 12px;
-    margin: 10px 0;
+    content: "";
 
-    background: rgba(0, 0, 0, 0.25);
+    display: block;
+
+    width: 100px;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #c8ff75,
+            transparent
+        );
+
+    margin: 15px auto;
+
     border-radius: 10px;
 }
 
-.contact p {
-    font-size: 24px;
-    margin: 15px 0;
-    text-align: center;
+
+/* =========================
+   ABOUT
+========================= */
+
+.about p {
+
+    font-size: 23px;
+
+    line-height: 1.7;
+
+    color: #e5e5e5;
+
+    text-align: justify;
 }
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.Skills ul {
+    list-style: none;
+}
+
+.Skills li {
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+    padding: 16px;
+
+    margin: 12px 0;
+
+    font-size: 22px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    border-left:
+        4px solid #c8ff75;
+
+    transition: 0.3s ease;
+}
+
+.Skills li:hover {
+
+    transform: translateX(10px);
+
+    background:
+        rgba(0, 0, 0, 0.5);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact > p {
+
+    text-align: center;
+
+    font-size: 20px;
+
+    margin: 10px 0;
+}
+
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+#contactForm {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    max-width: 700px;
+
+    margin: 35px auto 0;
+}
+
+#contactForm input,
+#contactForm textarea {
+
+    width: 100%;
+
+    padding: 17px;
+
+    background:
+        rgba(0, 0, 0, 0.3);
+
+    color: white;
+
+    border:
+        2px solid rgba(200, 255, 117, 0.3);
+
+    border-radius: 12px;
+
+    font-size: 17px;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+#contactForm textarea {
+
+    min-height: 150px;
+
+    resize: vertical;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+
+    border-color: #c8ff75;
+
+    box-shadow:
+        0 0 15px rgba(200, 255, 117, 0.3);
+}
+
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+    color: #cccccc;
+}
+
+
+/* =========================
+   SEND BUTTON
+========================= */
+
+#sendButton {
+
+    padding: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #75c92f,
+            #0b5c20
+        );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 30px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 5px 15px rgba(52, 212, 105, 0.4);
+}
+
+#sendButton:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(126, 255, 91, 0.5);
+}
+
+#sendButton:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes menuAnimation {
+
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
 
 @media (max-width: 600px) {
 
     body {
         padding: 20px;
     }
+
     header {
-        margin-bottom: 70px;
+        margin-bottom: 50px;
     }
 
-    header h1 {
+    .header-content {
+        align-items: flex-start;
+    }
+
+    .header-text h1 {
         font-size: 32px;
-        line-height: 1.2;
     }
 
-    header p {
-        font-size: 20px;
-        margin-top: 15px;
+    .header-text p {
+        font-size: 16px;
+    }
+
+    .menu-button {
+        width: 50px;
+        height: 48px;
     }
 
     .profile,
     .about,
     .Skills,
     .contact {
-        padding: 50px 25px;
+
+        padding: 40px 25px;
+
         border-radius: 20px;
     }
+
     .profile-left img {
-        width: 180px;
-        height: 180px;
-        margin-bottom: 40px;
+        width: 150px;
+        height: 150px;
     }
+
     .profile-name {
         font-size: 28px;
-        line-height: 1.3;
     }
+
     .profile-right p {
-        font-size: 21px;
-        margin: 12px 0;
-    }
-    .about > h2,
-    .Skills h2,
-    .contact h2 {
-        font-size: 42px;
-        margin-bottom: 30px;
-    }
-    .about > p {
-        font-size: 21px;
-        line-height: 1.6;
-        text-align: justify;
-    }
-    .Skills li {
-        font-size: 20px;
-    }
-    .contact p {
         font-size: 18px;
     }
-    .click-button {
-    text-align: center;
-    margin-bottom: 50px;
-}
-#clickButton {
-    background: linear-gradient(135deg, #0e800a, #0b4204);
 
-    color: white;
+    .about h2,
+    .Skills h2,
+    .contact h2 {
+        font-size: 32px;
+    }
 
-    border: none;
-    border-radius: 30px;
+    .about p {
+        font-size: 18px;
 
-    padding: 15px 40px;
+        text-align: left;
+    }
 
-    font-size: 20px;
-    font-weight: bold;
+    .Skills li {
+        font-size: 18px;
+    }
 
-     cursor: pointer;
-
-    transition: 0.3s;
-
-    box-shadow: 0 5px 15px rgba(52, 212, 105, 0.4);
-}
-#clickButton:hover {
-    transform: scale(1.08);
-}
-
-#clickButton:active {
-    transform: scale(0.95);
-}
+    .menu {
+        width: 160px;
+    }
 }
