@@ -237,9 +237,11 @@ header {
     }
     .about,
     .Skills,
-    .contact
-    .copyright {
+    .contact {
         padding: 70px 0;
+    }
+    .copyright{
+        text-align: center;
     }
 }
 @media (max-width: 500px) {
