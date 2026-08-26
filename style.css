@@ -212,6 +212,10 @@ header {
 .contact > p strong {
     color: #00ff88;
 }
+.copyright{
+    text-align: center;
+    font-family:monospace;
+}
 
 @media (max-width: 800px) {
 
@@ -252,5 +256,4 @@ header {
     .contact h2 {
         font-size: 32px;
     }
-
 }
