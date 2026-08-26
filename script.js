@@ -1,13 +1,6 @@
-// ==========================
-// HAMBURGER MENU
-// ==========================
-
 const menuButton = document.getElementById("menuButton");
 const menu = document.getElementById("menu");
 const menuLinks = document.querySelectorAll(".menu a");
-
-
-// Open and close the menu
 
 menuButton.addEventListener("click", function () {
 
@@ -16,9 +9,6 @@ menuButton.addEventListener("click", function () {
     menuButton.classList.toggle("active");
 
 });
-
-
-// Close menu after clicking a link
 
 menuLinks.forEach(function (link) {
 
@@ -31,9 +21,6 @@ menuLinks.forEach(function (link) {
     });
 
 });
-
-
-// Close menu when clicking outside
 
 document.addEventListener("click", function (event) {
 
@@ -50,19 +37,12 @@ document.addEventListener("click", function (event) {
 
 });
 
-
-// ==========================
-// CONTACT FORM
-// ==========================
-
 const contactForm = document.getElementById("contactForm");
 
 contactForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
-
-    // Get visitor information
 
     const name = document.getElementById("name").value;
 
@@ -76,20 +56,14 @@ contactForm.addEventListener("submit", function (event) {
     const subject = `Message from ${name}`;
 
 
-    // Create email content
-
     const body =
         `Name: ${name}\n` +
         `Email: ${email}\n\n` +
         `Message:\n${message}`;
 
 
-    // Your email address
-
     const yourEmail = "catimbangjonie@gmail.com";
 
-
-    // Open email application
 
     const mailtoLink =
         `mailto:${yourEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -97,8 +71,6 @@ contactForm.addEventListener("submit", function (event) {
 
     window.location.href = mailtoLink;
 
-
-    // Reset form
 
     contactForm.reset();
 
