@@ -237,7 +237,8 @@ header {
     }
     .about,
     .Skills,
-    .contact {
+    .contact
+    .copyright {
         padding: 70px 0;
     }
 }
@@ -253,7 +254,8 @@ header {
     }
     .about h2,
     .Skills h2,
-    .contact h2 {
+    .contact h2
+    .copyright h2 {
         font-size: 32px;
     }
 }
